@@ -1,3 +1,20 @@
 <h1>
   {{title}}
 </h1>
+<label><input type="checkbox" [(ngModel)]="isShowMore">是否显示详细信息</label>
+<p *ngIf="isShowMore" highlight> 是否显示此信息！！！ </p>
+
+<h2>My Heroes</h2>
+<ul class="heroes">
+  <li *ngFor="let hero of heroes" (click)="onSelect(hero)" [class.selected]="hero === selectedHero">
+    <span class="badge">{{hero.id}}</span> {{hero.name}}
+  </li>
+</ul>
+
+<div *ngIf="selectedHero">
+  <div>
+      <label>name: </label>
+      <input [(ngModel)]="selectedHero.name" placeholder="name"/>
+  </div>
+</div>
+
